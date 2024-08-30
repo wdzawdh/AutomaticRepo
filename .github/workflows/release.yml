@@ -31,12 +31,14 @@ jobs:
           echo "::set-output name=count::$i"
         shell: bash
 
-      # Step 3: Create a release for each .app folder
+      # Step 3: Create a release for each .app folder using a Bash loop
       - name: Create releases for .app folders
         run: |
           count=${{ steps.find_apps.outputs.count }}
           for (( i=0; i<count; i++ )); do
-            app="${{ steps.find_apps.outputs['app_'$i] }}"
+            app=$(eval echo '${{ steps.find_apps.outputs.app_'}}$i)
+            echo "Processing app: $app"
+            
             # 获取当前时间作为版本号
             timestamp=$(date +%Y%m%d%H%M%S)
             app_name=$(basename "$app" .app)
@@ -53,7 +55,7 @@ jobs:
               --data '{
                 "tag_name": "'"$app_name-$timestamp"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$app_name $timestamp"'",
+                "name": "'"$app_name Release $timestamp"'",
                 "draft": false,
                 "prerelease": false
               }')
@@ -68,3 +70,4 @@ jobs:
               --header "Content-Type: application/zip" \
               --upload-file "$zip_file"
           done
+        shell: bash
