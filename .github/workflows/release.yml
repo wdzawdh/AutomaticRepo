@@ -1,4 +1,4 @@
-name: Release .app and .workflow folders
+name: Conditional Release for .app and .workflow folders
 
 on:
   push:
@@ -16,33 +16,41 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Find all .app and .workflow directories in the root folder
-      - name: Find .app and .workflow directories
-        id: find_folders
+      # Step 2: Find all .app and .workflow directories that changed
+      - name: Find changed .app and .workflow directories
+        id: find_changed_folders
         run: |
-          folders=$(find . -maxdepth 1 -type d \( -name "*.app" -o -name "*.workflow" \))
-          echo "Found directories: $folders"
+          # 获取当前提交与上一提交之间有变化的文件夹
+          changed_folders=$(git diff --name-only HEAD~1 HEAD | grep -E '\.app|\.workflow' | cut -d '/' -f 1 | sort | uniq)
+          
+          if [ -z "$changed_folders" ]; then
+            echo "No changes in .app or .workflow directories"
+            exit 0  # 如果没有检测到变化，则跳过后续步骤
+          else
+            echo "Changed directories: $changed_folders"
+          fi
 
-          # Create a JSON file with the list of .app and .workflow directories
-          echo "[" > folders.json
+          # 将找到的文件夹存储在 JSON 文件中
+          echo "[" > changed_folders.json
           first=1
-          for folder in $folders; do
+          for folder in $changed_folders; do
             if [ $first -eq 1 ]; then
               first=0
             else
-              echo "," >> folders.json
+              echo "," >> changed_folders.json
             fi
-            echo "{\"path\": \"$folder\"}" >> folders.json
+            echo "{\"path\": \"$folder\"}" >> changed_folders.json
           done
-          echo "]" >> folders.json
+          echo "]" >> changed_folders.json
         shell: bash
 
-      # Step 3: Read the JSON file and create a release for each folder
-      - name: Create releases for .app and .workflow folders
+      # Step 3: Create a release only for the changed folders
+      - name: Create releases for changed .app and .workflow folders
+        if: steps.find_changed_folders.outputs.changed_folders != ''  # 仅当有文件夹变更时才运行
         run: |
-          count=$(jq length folders.json)
+          count=$(jq length changed_folders.json)
           for (( i=0; i<count; i++ )); do
-            folder=$(jq -r ".[$i].path" folders.json)
+            folder=$(jq -r ".[$i].path" changed_folders.json)
             echo "Processing folder: $folder"
             
             # 获取当前时间作为版本号
@@ -61,7 +69,7 @@ jobs:
               --data '{
                 "tag_name": "'"$folder_name-$timestamp"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$folder_name $timestamp"'",
+                "name": "'"$folder_name Release $timestamp"'",
                 "draft": false,
                 "prerelease": false
               }')
