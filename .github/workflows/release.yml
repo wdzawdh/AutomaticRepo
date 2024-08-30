@@ -69,7 +69,7 @@ jobs:
 
       # Step 3: Create or update a release for the changed folders with a fixed tag
       - name: Create or update a release for the changed folders
-        if: steps.find_changed_folders.outputs.changed_folders != ''  # 仅当有文件夹变更时才运行
+        if: contains(steps.find_changed_folders.outputs.changed_folders, '.')  # 检查是否存在任何变更文件夹
         run: |
           count=$(jq length changed_folders.json)
           for (( i=0; i<count; i++ )); do
