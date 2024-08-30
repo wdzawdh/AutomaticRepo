@@ -31,14 +31,14 @@ jobs:
           # 获取当前提交与上一提交之间有变化的文件
           changed_files=$(git diff --name-only HEAD~1 HEAD)
 
-          # 输出调试信息，但不要在变量赋值时添加额外信息
+          # 输出调试信息
           echo "Changed files detected:"
           echo "$changed_files"
 
           # 检查是否有变化的文件
           if [ -z "$changed_files" ]; then
             echo "No changes detected."
-            echo "::set-output name=changed_folders::"  # 确保输出为空
+            echo "changed_folders=" >> $GITHUB_ENV  # 确保输出为空
             exit 0  # 没有变化则正常退出
           fi
 
@@ -52,19 +52,19 @@ jobs:
           # 如果没有相关的文件夹变化，则退出
           if [ -z "$changed_folders" ]; then
             echo "No .app or .workflow directories changed."
-            echo "::set-output name=changed_folders::"  # 确保输出为空
+            echo "changed_folders=" >> $GITHUB_ENV  # 确保输出为空
             exit 0  # 没有相关文件夹变化则正常退出
           fi
 
-          # 设置输出，供后续步骤使用
-          echo "::set-output name=changed_folders::$changed_folders"
+          # 使用环境文件方式传递输出
+          echo "changed_folders=$changed_folders" >> $GITHUB_ENV
 
       # Step 3: Create or update a release for the changed folders
       - name: Create or update a release for the changed folders
-        if: contains(steps.find_changed_folders.outputs.changed_folders, '.')  # 检查是否存在任何变更文件夹
+        if: env.changed_folders != ''  # 仅当有文件夹变更时才运行
         run: |
           # 从上一步中获取更改的文件夹
-          changed_folders=${{ steps.find_changed_folders.outputs.changed_folders }}
+          changed_folders=${{ env.changed_folders }}
           
           count=$(echo "$changed_folders" | wc -w)  # 统计变更的文件夹数
           
@@ -85,7 +85,7 @@ jobs:
               --data '{
                 "tag_name": "'"$folder_name-release"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$folder_name Release"'",
+                "name": "'"$folder_name"'",
                 "draft": false,
                 "prerelease": false
               }')

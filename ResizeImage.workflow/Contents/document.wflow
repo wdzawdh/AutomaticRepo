@@ -90,7 +90,7 @@
 				<key>Class Name</key>
 				<string>AMAskForFinderItemsAction</string>
 				<key>IgnoresInput</key>
-				<false/>
+				<true/>
 				<key>InputUUID</key>
 				<string>63B2EE63-5A65-4F59-A3D0-48E09888D11B</string>
 				<key>Keywords</key>
@@ -537,26 +537,26 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>043B5B64-7E0A-482F-91CB-C7AD23430910</key>
+		<key>7606292F-180F-4B6C-9172-42A62E955932</key>
+		<dict>
+			<key>from</key>
+			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
+			<key>to</key>
+			<string>F9081460-5689-421E-B67B-4584C0A41DD4 - F9081460-5689-421E-B67B-4584C0A41DD4</string>
+		</dict>
+		<key>937097F8-1D97-421C-9B15-9BD64C960047</key>
 		<dict>
 			<key>from</key>
 			<string>869024A8-679F-4C9D-8E64-2A9D52708E49 - 869024A8-679F-4C9D-8E64-2A9D52708E49</string>
 			<key>to</key>
 			<string>FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE - FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE</string>
 		</dict>
-		<key>9D91D41F-2051-465E-BC9A-C7D5784E51E0</key>
+		<key>A87FC6B9-AA5F-43D0-9238-5137765C3231</key>
 		<dict>
 			<key>from</key>
 			<string>FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE - FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE</string>
 			<key>to</key>
 			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
-		</dict>
-		<key>F151E343-653F-4BE7-8B77-3707164A53E3</key>
-		<dict>
-			<key>from</key>
-			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
-			<key>to</key>
-			<string>F9081460-5689-421E-B67B-4584C0A41DD4 - F9081460-5689-421E-B67B-4584C0A41DD4</string>
 		</dict>
 	</dict>
 	<key>variables</key>
