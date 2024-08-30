@@ -18,10 +18,12 @@
 
 ### **TinyPng压缩图片** [download](https://github.com/wdzawdh/AutomaticRepo/releases/download/TinyImage.workflow-release/TinyImage.workflow.zip)
 * 此工具会将选择的图片使用TinyPng压缩
+* 默认大于150k的图片才会进行压缩，修改配置可以用Automator打开workflow在“过滤Finder项目”中修改
 * 工具会自动提示输入你的TinyPngApiKey [查看ApiKey](https://tinify.com/dashboard/api)
 
 ### **TinyPng批量压缩图片** [download](https://github.com/wdzawdh/AutomaticRepo/releases/download/TinyImages.workflow-release/TinyImages.workflow.zip)
 * 此工具会将你选择的文件夹中的图片批量使用TinyPng压缩
+* 默认大于150k的图片才会进行压缩，修改配置可以用Automator打开workflow在“过滤Finder项目”中修改
 * 工具会自动提示输入你的TinyPngApiKey [查看ApiKey](https://tinify.com/dashboard/api)
 > 注意：免费TinyPng账户每月限制500张图片 [查看余量](https://tinify.com/dashboard/api)
 
