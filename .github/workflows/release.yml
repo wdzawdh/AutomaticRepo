@@ -61,7 +61,7 @@ jobs:
               --data '{
                 "tag_name": "'"$app_name-$timestamp"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$app_name Release $timestamp"'",
+                "name": "'"$app_name $timestamp"'",
                 "draft": false,
                 "prerelease": false
               }')
