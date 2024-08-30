@@ -1,0 +1,79 @@
+name: Package and Release .app Folders
+
+on:
+  push:
+    branches:
+      - main  # 仅在推送到 main 分支时触发
+
+jobs:
+  build-and-release:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # 检出仓库代码
+
+      - name: Get current timestamp  # 获取当前时间作为版本号
+        id: vars
+        run: echo "RELEASE_VERSION=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
+      - name: Find modified .app folders  # 查找根目录下有更改的 .app 文件夹
+        id: find_apps
+        run: |
+          # 查找有更改的 .app 文件夹
+          changed_apps=$(git diff --name-only HEAD^ HEAD | grep -E '^[^/]+\.app/?' | cut -d/ -f1 | sort -u)
+          if [ -z "$changed_apps" ]; then
+            echo "No .app folders changed, skipping."
+            exit 0
+          fi
+          echo "CHANGED_APPS=$changed_apps" >> $GITHUB_ENV
+
+      - name: Check for existing releases  # 检查是否已有发布的 Release
+        id: check_releases
+        run: |
+          apps_to_package=""
+          for app in ${{ env.CHANGED_APPS }}; do
+            echo "Checking if release exists for $app"
+            # 使用 GitHub API 检查是否已有发布
+            release_check=$(gh release view "$app" 2>/dev/null || echo "no release")
+            if [[ "$release_check" == "no release" ]]; then
+              echo "No release found for $app, will package."
+              apps_to_package="$apps_to_package $app"
+            else
+              echo "Release already exists for $app, skipping."
+            fi
+          done
+          if [ -z "$apps_to_package" ]; then
+            echo "No new apps to package, skipping."
+            exit 0
+          fi
+          echo "APPS_TO_PACKAGE=$apps_to_package" >> $GITHUB_ENV
+
+      - name: Zip each new .app folder  # 打包未发布的 .app 文件夹为 zip
+        run: |
+          for app in ${{ env.APPS_TO_PACKAGE }}; do
+            echo "Zipping $app"
+            zip -r "${app}.zip" "$app"
+          done
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.RELEASE_VERSION }}  # 使用时间戳作为版本标签
+          release_name: "Release ${{ env.RELEASE_VERSION }}"  # Release 名称
+          draft: false
+          prerelease: false
+
+      - name: Upload ZIP files to GitHub Release  # 上传生成的 zip 文件到 Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./  # 查找打包的 zip 文件
+          asset_name: ${{ env.APPS_TO_PACKAGE }}.zip  # 使用 .app 文件夹名称作为 zip 名称
+          asset_content_type: application/zip
+        if: ${{ env.APPS_TO_PACKAGE != '' }}  # 仅在有未发布的文件夹时运行
