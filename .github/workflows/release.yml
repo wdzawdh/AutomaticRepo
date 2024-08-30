@@ -20,22 +20,29 @@ jobs:
       - name: Find .app directories
         id: find_apps
         run: |
-          apps=($(find . -maxdepth 1 -type d -name "*.app"))
-          echo "Found app directories: ${apps[@]}"
-          # Save the list of directories and count to environment variables
-          count=${#apps[@]}
-          echo "APP_COUNT=$count" >> $GITHUB_ENV
-          for (( i=0; i<count; i++ )); do
-            echo "APP_$i=${apps[i]}" >> $GITHUB_ENV
+          apps=$(find . -maxdepth 1 -type d -name "*.app")
+          echo "Found app directories: $apps"
+
+          # Create a JSON file with the list of .app directories
+          echo "[" > apps.json
+          first=1
+          for app in $apps; do
+            if [ $first -eq 1 ]; then
+              first=0
+            else
+              echo "," >> apps.json
+            fi
+            echo "{\"path\": \"$app\"}" >> apps.json
           done
+          echo "]" >> apps.json
         shell: bash
 
-      # Step 3: Create a release for each .app folder using a Bash loop
+      # Step 3: Read the JSON file and create a release for each .app folder
       - name: Create releases for .app folders
         run: |
-          count=${{ env.APP_COUNT }}
+          count=$(jq length apps.json)
           for (( i=0; i<count; i++ )); do
-            app=${{ env["APP_$i"] }}
+            app=$(jq -r ".[$i].path" apps.json)
             echo "Processing app: $app"
             
             # 获取当前时间作为版本号
