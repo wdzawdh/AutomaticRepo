@@ -57,15 +57,18 @@ jobs:
             exit 0
           fi
 
-          # 使用环境文件方式传递输出
-          echo "changed_folders=$changed_folders" >> $GITHUB_ENV
+          # 将文件夹名保存到一个临时文件中，避免直接使用环境变量传递
+          echo "$changed_folders" > changed_folders.txt
+
+          # 将文件路径传递给后续步骤
+          echo "changed_folders_file=changed_folders.txt" >> $GITHUB_ENV
 
       # Step 3: Create or update a release for the changed folders
       - name: Create or update a release for the changed folders
-        if: env.changed_folders != ''  # 仅当有文件夹变更时才运行
+        if: env.changed_folders_file != ''  # 仅当有文件夹变更时才运行
         run: |
-          # 从上一步中获取更改的文件夹
-          changed_folders=${{ env.changed_folders }}
+          # 从文件中读取更改的文件夹
+          changed_folders=$(cat "${{ env.changed_folders_file }}")
           
           # 确保 changed_folders 不为空
           if [ -z "$changed_folders" ]; then
