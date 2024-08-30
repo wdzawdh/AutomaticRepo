@@ -25,31 +25,31 @@ jobs:
           # 获取当前提交与上一提交之间有变化的文件夹
           changed_folders=$(git diff --name-only HEAD~1 HEAD)
 
-          # 打印调试信息
+          # 输出调试信息
           echo "Changed files:"
           echo "$changed_folders"
 
           if [ -z "$changed_folders" ]; then
-            echo "No changes detected in .app or .workflow directories"
-            exit 0  # 没有检测到变化则退出
+            echo "No changes detected."
+            exit 0  # 没有变化则正常退出，不抛出错误
           fi
 
           # 过滤出 .app 和 .workflow 文件夹
-          changed_folders=$(echo "$changed_folders" | grep -E '\.app|\.workflow' | cut -d '/' -f 1 | sort | uniq)
+          filtered_folders=$(echo "$changed_folders" | grep -E '\.app$|\.workflow$' | cut -d '/' -f 1 | sort | uniq)
 
-          # 再次打印调试信息
+          # 打印过滤后的文件夹
           echo "Filtered changed folders:"
-          echo "$changed_folders"
+          echo "$filtered_folders"
 
-          if [ -z "$changed_folders" ]; then
-            echo "No changes in .app or .workflow directories"
-            exit 0  # 没有检测到相关文件夹的变化则退出
+          if [ -z "$filtered_folders" ]; then
+            echo "No .app or .workflow directories changed."
+            exit 0  # 没有相关文件夹变化则正常退出
           fi
 
           # 将找到的文件夹存储在 JSON 文件中
           echo "[" > changed_folders.json
           first=1
-          for folder in $changed_folders; do
+          for folder in $filtered_folders; do
             if [ $first -eq 1 ]; then
               first=0
             else
