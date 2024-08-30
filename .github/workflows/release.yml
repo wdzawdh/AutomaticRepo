@@ -22,13 +22,28 @@ jobs:
       - name: Find changed .app and .workflow directories
         id: find_changed_folders
         run: |
-          changed_folders=$(git diff --name-only HEAD~1 HEAD | grep -E '\.app|\.workflow' | cut -d '/' -f 1 | sort | uniq)
-          
+          # 获取当前提交与上一提交之间有变化的文件夹
+          changed_folders=$(git diff --name-only HEAD~1 HEAD)
+
+          # 打印调试信息
+          echo "Changed files:"
+          echo "$changed_folders"
+
+          if [ -z "$changed_folders" ]; then
+            echo "No changes detected in .app or .workflow directories"
+            exit 0  # 没有检测到变化则退出
+          fi
+
+          # 过滤出 .app 和 .workflow 文件夹
+          changed_folders=$(echo "$changed_folders" | grep -E '\.app|\.workflow' | cut -d '/' -f 1 | sort | uniq)
+
+          # 再次打印调试信息
+          echo "Filtered changed folders:"
+          echo "$changed_folders"
+
           if [ -z "$changed_folders" ]; then
             echo "No changes in .app or .workflow directories"
-            exit 0  # 如果没有检测到变化，则跳过后续步骤
-          else
-            echo "Changed directories: $changed_folders"
+            exit 0  # 没有检测到相关文件夹的变化则退出
           fi
 
           # 将找到的文件夹存储在 JSON 文件中
@@ -68,7 +83,7 @@ jobs:
               --data '{
                 "tag_name": "'"$folder_name-release"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$folder_name"'",
+                "name": "'"$folder_name Release"'",
                 "draft": false,
                 "prerelease": false
               }')
