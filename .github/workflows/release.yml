@@ -25,6 +25,7 @@ jobs:
           # 检查是否有足够的历史提交
           if [ $(git rev-list --count HEAD) -lt 2 ]; then
             echo "Not enough commit history to compare. Exiting."
+            echo "changed_folders=" >> $GITHUB_ENV
             exit 0
           fi
 
@@ -38,8 +39,8 @@ jobs:
           # 检查是否有变化的文件
           if [ -z "$changed_files" ]; then
             echo "No changes detected."
-            echo "changed_folders=" >> $GITHUB_ENV  # 确保输出为空
-            exit 0  # 没有变化则正常退出
+            echo "changed_folders=" >> $GITHUB_ENV
+            exit 0
           fi
 
           # 递归查找 .app 和 .workflow 文件夹中有变动的文件
@@ -52,8 +53,8 @@ jobs:
           # 如果没有相关的文件夹变化，则退出
           if [ -z "$changed_folders" ]; then
             echo "No .app or .workflow directories changed."
-            echo "changed_folders=" >> $GITHUB_ENV  # 确保输出为空
-            exit 0  # 没有相关文件夹变化则正常退出
+            echo "changed_folders=" >> $GITHUB_ENV
+            exit 0
           fi
 
           # 使用环境文件方式传递输出
@@ -66,9 +67,19 @@ jobs:
           # 从上一步中获取更改的文件夹
           changed_folders=${{ env.changed_folders }}
           
-          count=$(echo "$changed_folders" | wc -w)  # 统计变更的文件夹数
-          
+          # 确保 changed_folders 不为空
+          if [ -z "$changed_folders" ]; then
+            echo "No folders to process. Exiting."
+            exit 0
+          fi
+
           for folder in $changed_folders; do
+            # 检查文件夹是否存在
+            if [ ! -d "$folder" ]; then
+              echo "Folder $folder does not exist. Skipping."
+              continue
+            fi
+            
             echo "Processing folder: $folder"
             
             folder_name=$(basename "$folder")
