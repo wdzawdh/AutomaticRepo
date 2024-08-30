@@ -5,6 +5,9 @@ on:
     branches:
       - main  # 仅在推送到 main 分支时触发
 
+permissions:
+  contents: write  # 授予写入权限
+
 jobs:
   build-and-release:
     runs-on: macos-latest
