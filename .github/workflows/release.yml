@@ -1,4 +1,4 @@
-name: Release .app folders
+name: Release .app and .workflow folders
 
 on:
   push:
@@ -9,49 +9,49 @@ permissions:
   contents: write  # 确保 GITHUB_TOKEN 有写权限
 
 jobs:
-  release-apps:
+  release-apps-workflows:
     runs-on: macos-latest  # 使用 macOS 环境
     steps:
       # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Find all .app directories in the root folder
-      - name: Find .app directories
-        id: find_apps
+      # Step 2: Find all .app and .workflow directories in the root folder
+      - name: Find .app and .workflow directories
+        id: find_folders
         run: |
-          apps=$(find . -maxdepth 1 -type d -name "*.app")
-          echo "Found app directories: $apps"
+          folders=$(find . -maxdepth 1 -type d \( -name "*.app" -o -name "*.workflow" \))
+          echo "Found directories: $folders"
 
-          # Create a JSON file with the list of .app directories
-          echo "[" > apps.json
+          # Create a JSON file with the list of .app and .workflow directories
+          echo "[" > folders.json
           first=1
-          for app in $apps; do
+          for folder in $folders; do
             if [ $first -eq 1 ]; then
               first=0
             else
-              echo "," >> apps.json
+              echo "," >> folders.json
             fi
-            echo "{\"path\": \"$app\"}" >> apps.json
+            echo "{\"path\": \"$folder\"}" >> folders.json
           done
-          echo "]" >> apps.json
+          echo "]" >> folders.json
         shell: bash
 
-      # Step 3: Read the JSON file and create a release for each .app folder
-      - name: Create releases for .app folders
+      # Step 3: Read the JSON file and create a release for each folder
+      - name: Create releases for .app and .workflow folders
         run: |
-          count=$(jq length apps.json)
+          count=$(jq length folders.json)
           for (( i=0; i<count; i++ )); do
-            app=$(jq -r ".[$i].path" apps.json)
-            echo "Processing app: $app"
+            folder=$(jq -r ".[$i].path" folders.json)
+            echo "Processing folder: $folder"
             
             # 获取当前时间作为版本号
             timestamp=$(date +%Y%m%d%H%M%S)
-            app_name=$(basename "$app" .app)
+            folder_name=$(basename "$folder")
 
-            # 打包 .app 文件夹为 ZIP 文件
-            zip_file="${app_name}_${timestamp}.zip"
-            zip -r "$zip_file" "$app"
+            # 打包文件夹为 ZIP 文件
+            zip_file="${folder_name}_${timestamp}.zip"
+            zip -r "$zip_file" "$folder"
 
             # 创建 GitHub Release
             release_response=$(curl --request POST \
@@ -59,9 +59,9 @@ jobs:
               --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               --header "Content-Type: application/json" \
               --data '{
-                "tag_name": "'"$app_name-$timestamp"'",
+                "tag_name": "'"$folder_name-$timestamp"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$app_name $timestamp"'",
+                "name": "'"$folder_name $timestamp"'",
                 "draft": false,
                 "prerelease": false
               }')
