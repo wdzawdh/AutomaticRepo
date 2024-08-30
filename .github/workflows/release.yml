@@ -20,16 +20,23 @@ jobs:
       - name: Find .app directories
         id: find_apps
         run: |
-          # 查找所有以 .app 结尾的文件夹
           apps=$(find . -maxdepth 1 -type d -name "*.app")
           echo "Found app directories: $apps"
-          echo "::set-output name=apps::$apps"
+          # 按行拆分，并把每个路径设置为单独的输出
+          i=0
+          for app in $apps; do
+            echo "::set-output name=app_$i::$app"
+            ((i=i+1))
+          done
+          echo "::set-output name=count::$i"
         shell: bash
 
       # Step 3: Create a release for each .app folder
       - name: Create releases for .app folders
         run: |
-          for app in ${{ steps.find_apps.outputs.apps }}; do
+          count=${{ steps.find_apps.outputs.count }}
+          for (( i=0; i<count; i++ )); do
+            app="${{ steps.find_apps.outputs['app_'$i] }}"
             # 获取当前时间作为版本号
             timestamp=$(date +%Y%m%d%H%M%S)
             app_name=$(basename "$app" .app)
@@ -39,22 +46,20 @@ jobs:
             zip -r "$zip_file" "$app"
 
             # 创建 GitHub Release
-            curl --request POST \
+            release_response=$(curl --request POST \
               --url "https://api.github.com/repos/${{ github.repository }}/releases" \
               --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               --header "Content-Type: application/json" \
               --data '{
                 "tag_name": "'"$app_name-$timestamp"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$app_name Release $timestamp"'",
+                "name": "'"$app_name $timestamp"'",
                 "draft": false,
                 "prerelease": false
-              }'
+              }')
 
             # 获取最新创建的 Release ID
-            release_id=$(curl --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              https://api.github.com/repos/${{ github.repository }}/releases/tags/"$app_name-$timestamp" \
-              | jq '.id')
+            release_id=$(echo "$release_response" | jq '.id')
 
             # 上传 ZIP 文件到 Release
             curl --request POST \
