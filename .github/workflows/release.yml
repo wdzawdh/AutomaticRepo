@@ -22,26 +22,32 @@ jobs:
       - name: Find changed .app and .workflow directories
         id: find_changed_folders
         run: |
-          # 获取当前提交与上一提交之间有变化的文件夹
-          changed_folders=$(git diff --name-only HEAD~1 HEAD)
+          # 检查是否有足够的历史提交
+          if [ $(git rev-list --count HEAD) -lt 2 ]; then
+            echo "Not enough commit history to compare. Exiting."
+            exit 0
+          fi
+
+          changed_files=$(git diff --name-only HEAD~1 HEAD)
 
           # 输出调试信息
           echo "Changed files:"
-          echo "$changed_folders"
+          echo "$changed_files"
 
-          if [ -z "$changed_folders" ]; then
+          # 如果没有任何变化
+          if [ -z "$changed_files" ]; then
             echo "No changes detected."
-            exit 0  # 没有变化则正常退出，不抛出错误
+            exit 0  # 没有变化则正常退出
           fi
 
           # 过滤出 .app 和 .workflow 文件夹
-          filtered_folders=$(echo "$changed_folders" | grep -E '\.app$|\.workflow$' | cut -d '/' -f 1 | sort | uniq)
+          changed_folders=$(echo "$changed_files" | grep -E '\.app$|\.workflow$' | cut -d '/' -f 1 | sort | uniq)
 
           # 打印过滤后的文件夹
           echo "Filtered changed folders:"
-          echo "$filtered_folders"
+          echo "$changed_folders"
 
-          if [ -z "$filtered_folders" ]; then
+          if [ -z "$changed_folders" ]; then
             echo "No .app or .workflow directories changed."
             exit 0  # 没有相关文件夹变化则正常退出
           fi
@@ -49,7 +55,7 @@ jobs:
           # 将找到的文件夹存储在 JSON 文件中
           echo "[" > changed_folders.json
           first=1
-          for folder in $filtered_folders; do
+          for folder in $changed_folders; do
             if [ $first -eq 1 ]; then
               first=0
             else
@@ -83,7 +89,7 @@ jobs:
               --data '{
                 "tag_name": "'"$folder_name-release"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$folder_name Release"'",
+                "name": "'"$folder_name"'",
                 "draft": false,
                 "prerelease": false
               }')
