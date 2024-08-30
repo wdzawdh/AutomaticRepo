@@ -1,4 +1,4 @@
-name: Conditional Release for .app and .workflow folders
+name: Release .app and .workflow folders
 
 on:
   push:
@@ -12,15 +12,16 @@ jobs:
   release-apps-workflows:
     runs-on: macos-latest  # 使用 macOS 环境
     steps:
-      # Step 1: Checkout repository
+      # Step 1: Checkout repository with full commit history (fetch at least 2 commits)
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2  # 拉取当前和上一个提交
 
       # Step 2: Find all .app and .workflow directories that changed
       - name: Find changed .app and .workflow directories
         id: find_changed_folders
         run: |
-          # 获取当前提交与上一提交之间有变化的文件夹
           changed_folders=$(git diff --name-only HEAD~1 HEAD | grep -E '\.app|\.workflow' | cut -d '/' -f 1 | sort | uniq)
           
           if [ -z "$changed_folders" ]; then
@@ -44,8 +45,8 @@ jobs:
           echo "]" >> changed_folders.json
         shell: bash
 
-      # Step 3: Create a release only for the changed folders
-      - name: Create releases for changed .app and .workflow folders
+      # Step 3: Create or update a release for the changed folders with a fixed tag
+      - name: Create or update a release for the changed folders
         if: steps.find_changed_folders.outputs.changed_folders != ''  # 仅当有文件夹变更时才运行
         run: |
           count=$(jq length changed_folders.json)
@@ -53,28 +54,26 @@ jobs:
             folder=$(jq -r ".[$i].path" changed_folders.json)
             echo "Processing folder: $folder"
             
-            # 获取当前时间作为版本号
-            timestamp=$(date +%Y%m%d%H%M%S)
             folder_name=$(basename "$folder")
 
             # 打包文件夹为 ZIP 文件
-            zip_file="${folder_name}_${timestamp}.zip"
+            zip_file="${folder_name}.zip"
             zip -r "$zip_file" "$folder"
 
-            # 创建 GitHub Release
+            # 创建或更新 GitHub Release
             release_response=$(curl --request POST \
               --url "https://api.github.com/repos/${{ github.repository }}/releases" \
               --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               --header "Content-Type: application/json" \
               --data '{
-                "tag_name": "'"$folder_name-$timestamp"'",
+                "tag_name": "'"$folder_name-release"'",
                 "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$folder_name Release $timestamp"'",
+                "name": "'"$folder_name"'",
                 "draft": false,
                 "prerelease": false
               }')
 
-            # 获取最新创建的 Release ID
+            # 获取 Release ID
             release_id=$(echo "$release_response" | jq '.id')
 
             # 上传 ZIP 文件到 Release
