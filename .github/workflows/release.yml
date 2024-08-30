@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 2  # 拉取当前和上一个提交
 
-      # Step 2: Find all .app and .workflow directories that changed
+      # Step 2: Find all changed .app and .workflow directories recursively
       - name: Find changed .app and .workflow directories
         id: find_changed_folders
         run: |
@@ -28,7 +28,7 @@ jobs:
             exit 0
           fi
 
-          # 正确获取当前提交与上一提交之间有变化的文件
+          # 获取当前提交与上一提交之间有变化的文件
           changed_files=$(git diff --name-only HEAD~1 HEAD)
 
           # 输出调试信息，但不要在变量赋值时添加额外信息
@@ -41,8 +41,8 @@ jobs:
             exit 0  # 没有变化则正常退出
           fi
 
-          # 过滤出 .app 和 .workflow 文件夹
-          changed_folders=$(echo "$changed_files" | grep -E '\.app$|\.workflow$' | cut -d '/' -f 1 | sort | uniq)
+          # 递归查找 .app 和 .workflow 文件夹中有变动的文件
+          changed_folders=$(echo "$changed_files" | grep -E '(^.+\.app/|^.+\.workflow/)' | cut -d '/' -f 1 | sort | uniq)
 
           # 输出过滤后的文件夹
           echo "Filtered changed folders:"
