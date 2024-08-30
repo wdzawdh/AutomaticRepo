@@ -28,13 +28,14 @@ jobs:
             exit 0
           fi
 
+          # 正确获取当前提交与上一提交之间有变化的文件
           changed_files=$(git diff --name-only HEAD~1 HEAD)
 
-          # 输出调试信息
-          echo "Changed files:"
+          # 输出调试信息，但不要在变量赋值时添加额外信息
+          echo "Changed files detected:"
           echo "$changed_files"
 
-          # 如果没有任何变化
+          # 检查是否有变化的文件
           if [ -z "$changed_files" ]; then
             echo "No changes detected."
             exit 0  # 没有变化则正常退出
@@ -43,10 +44,11 @@ jobs:
           # 过滤出 .app 和 .workflow 文件夹
           changed_folders=$(echo "$changed_files" | grep -E '\.app$|\.workflow$' | cut -d '/' -f 1 | sort | uniq)
 
-          # 打印过滤后的文件夹
+          # 输出过滤后的文件夹
           echo "Filtered changed folders:"
           echo "$changed_folders"
 
+          # 如果没有相关的文件夹变化，则退出
           if [ -z "$changed_folders" ]; then
             echo "No .app or .workflow directories changed."
             exit 0  # 没有相关文件夹变化则正常退出
@@ -64,7 +66,6 @@ jobs:
             echo "{\"path\": \"$folder\"}" >> changed_folders.json
           done
           echo "]" >> changed_folders.json
-        shell: bash
 
       # Step 3: Create or update a release for the changed folders with a fixed tag
       - name: Create or update a release for the changed folders
