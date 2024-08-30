@@ -69,7 +69,7 @@
 					<key>defaultLocation</key>
 					<string>~/Desktop</string>
 					<key>granularity</key>
-					<integer>2</integer>
+					<integer>0</integer>
 					<key>multipleSelection</key>
 					<true/>
 					<key>promptMessage</key>
@@ -537,26 +537,26 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>0B8C66BA-DD33-40B8-90E2-F1A0CC8D9A6E</key>
-		<dict>
-			<key>from</key>
-			<string>FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE - FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE</string>
-			<key>to</key>
-			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
-		</dict>
-		<key>1C5E440D-E8EF-43C9-B37F-4E61E8F13C9C</key>
+		<key>5E7C55D9-2880-48FD-92DC-60AEB0E47C40</key>
 		<dict>
 			<key>from</key>
 			<string>869024A8-679F-4C9D-8E64-2A9D52708E49 - 869024A8-679F-4C9D-8E64-2A9D52708E49</string>
 			<key>to</key>
 			<string>FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE - FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE</string>
 		</dict>
-		<key>DB7658CF-851A-443C-A4AE-2BA08BC1A3E7</key>
+		<key>87615F22-F05C-4494-92CF-90E9C2F0A159</key>
 		<dict>
 			<key>from</key>
 			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
 			<key>to</key>
 			<string>F9081460-5689-421E-B67B-4584C0A41DD4 - F9081460-5689-421E-B67B-4584C0A41DD4</string>
+		</dict>
+		<key>962EB485-982A-4C94-A906-4B3AAFA8C931</key>
+		<dict>
+			<key>from</key>
+			<string>FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE - FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE</string>
+			<key>to</key>
+			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
 		</dict>
 	</dict>
 	<key>variables</key>
@@ -573,7 +573,7 @@
 	<key>workflowMetaData</key>
 	<dict>
 		<key>workflowTypeIdentifier</key>
-		<string>com.apple.Automator.application</string>
+		<string>com.apple.Automator.workflow</string>
 	</dict>
 </dict>
 </plist>
