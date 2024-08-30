@@ -90,7 +90,7 @@
 				<key>Class Name</key>
 				<string>AMAskForFinderItemsAction</string>
 				<key>IgnoresInput</key>
-				<true/>
+				<false/>
 				<key>InputUUID</key>
 				<string>63B2EE63-5A65-4F59-A3D0-48E09888D11B</string>
 				<key>Keywords</key>
