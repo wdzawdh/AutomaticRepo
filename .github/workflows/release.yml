@@ -104,6 +104,8 @@ jobs:
                 "prerelease": false
               }')
 
+            echo "$release_response" # 输出release_response
+
             # 获取 Release ID
             release_id=$(echo "$release_response" | jq '.id')
 

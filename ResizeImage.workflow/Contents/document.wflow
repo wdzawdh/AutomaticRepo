@@ -169,7 +169,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:153.000000</string>
+				<string>565.000000:153.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -289,7 +289,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:253.000000</string>
+				<string>565.000000:253.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Copy Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -448,7 +448,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:357.000000</string>
+				<string>565.000000:357.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Scale Images.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -537,26 +537,26 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>04B83AC5-7AA1-4E53-80DE-26722F100216</key>
+		<key>45D2F88D-F494-448D-80E6-FC43ECF7F89A</key>
 		<dict>
 			<key>from</key>
 			<string>FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE - FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE</string>
 			<key>to</key>
 			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
 		</dict>
-		<key>C19ADCAE-FDF3-4E25-A7AA-93B58668EE84</key>
-		<dict>
-			<key>from</key>
-			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
-			<key>to</key>
-			<string>F9081460-5689-421E-B67B-4584C0A41DD4 - F9081460-5689-421E-B67B-4584C0A41DD4</string>
-		</dict>
-		<key>D7DFB9C8-A1B3-4644-9DF9-9B6373103306</key>
+		<key>87500A3A-35E7-4A94-A6CE-45FF0670A93B</key>
 		<dict>
 			<key>from</key>
 			<string>869024A8-679F-4C9D-8E64-2A9D52708E49 - 869024A8-679F-4C9D-8E64-2A9D52708E49</string>
 			<key>to</key>
 			<string>FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE - FEAEE8C5-7113-4FC7-B8AE-D1B12D4E89BE</string>
+		</dict>
+		<key>E6CB5659-7474-4889-A98F-865B123A6BBF</key>
+		<dict>
+			<key>from</key>
+			<string>DED70662-5A1E-4F7F-B72B-0A010434D0CF - DED70662-5A1E-4F7F-B72B-0A010434D0CF</string>
+			<key>to</key>
+			<string>F9081460-5689-421E-B67B-4584C0A41DD4 - F9081460-5689-421E-B67B-4584C0A41DD4</string>
 		</dict>
 	</dict>
 	<key>variables</key>
