@@ -2,9 +2,9 @@
 - 方式1
   - 下载后用命令执行`automator path/xxx.workflow`
 - 方式2
-  - 下载后双击打开，点击Automatic的运行按钮
+  - 下载后双击打开，点击Automator的运行按钮
 - 方式3
-  - 下载后双击打开，文件->转换为->类型选择应用程序->保存成应用程序类型，之后可以双击应用程序直接运行
+  - 创建新的Automator应用程序，将所有操作流程复制进去，保存后双击运行
 
 ## 自动化工具列表
 ### **上传Github图库** [download](https://github.com/wdzawdh/AutomaticRepo/releases/download/UploadImage.workflow-release/UploadImage.workflow.zip)
