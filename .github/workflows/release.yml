@@ -99,6 +99,8 @@ jobs:
             # 检查返回的状态码
             release_id=$(echo "$release_response" | jq '.id')
 
+            echo "request release_id $release_id"
+
             if [ "$release_id" == "null" ]; then
               # 如果没有 release，则创建新的 release
               release_response=$(curl --request POST \
@@ -115,6 +117,7 @@ jobs:
 
               # 获取新的 release_id
               release_id=$(echo "$release_response" | jq '.id')
+              echo "create release_id $release_id"
             else
               echo "Release already exists. Updating the release."
             fi
@@ -127,9 +130,11 @@ jobs:
             # 查找与 zip 文件名匹配的资产
             asset_id=$(echo "$assets" | jq -r ".[] | select(.name == \"$zip_file\") | .id")
 
+            echo "asset_id $asset_id"
+
             if [ -n "$asset_id" ]; then
               # 如果存在同名资产，更新该资产
-              curl --request PATCH \
+              release_response=curl --request PATCH \
                 --url "https://api.github.com/repos/${{ github.repository }}/releases/assets/$asset_id" \
                 --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                 --header "Content-Type: application/json" \
@@ -139,11 +144,12 @@ jobs:
                 }'
             else
               # 如果没有同名资产，上传 ZIP 文件
-              curl --request POST \
+              release_response=curl --request POST \
                 --url "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=$zip_file" \
                 --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                 --header "Content-Type: application/zip" \
                 --upload-file "$zip_file"
             fi
+            echo "upload_response $release_response"
           done
         shell: bash

@@ -169,7 +169,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:153.000000</string>
+				<string>565.000000:153.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -269,7 +269,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:254.000000</string>
+				<string>565.000000:254.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Folder Contents.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -431,7 +431,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:427.000000</string>
+				<string>565.000000:427.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -601,7 +601,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:696.000000</string>
+				<string>565.000000:696.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -774,7 +774,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:869.000000</string>
+				<string>565.000000:869.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -992,7 +992,7 @@ osascript -e 'display notification "压缩完成" with title "TinyPng"'</string>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:1051.000000</string>
+				<string>565.000000:1051.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1002,40 +1002,40 @@ osascript -e 'display notification "压缩完成" with title "TinyPng"'</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>481EA537-9CA0-44B3-A618-2604884CAEC6</key>
+		<key>0DF4243D-204F-40F3-9E65-139EEB520129</key>
 		<dict>
 			<key>from</key>
-			<string>26A3CB3E-24EC-43A2-AE40-229E16FBBF71 - 26A3CB3E-24EC-43A2-AE40-229E16FBBF71</string>
-			<key>to</key>
 			<string>40288C70-9079-4824-858A-4F588F4F5FEF - 40288C70-9079-4824-858A-4F588F4F5FEF</string>
-		</dict>
-		<key>ACFE52E9-5616-4E35-A8E3-19CE570CD64F</key>
-		<dict>
-			<key>from</key>
-			<string>D6150556-CEEC-40A4-9C83-DB20DDD2AD9F - D6150556-CEEC-40A4-9C83-DB20DDD2AD9F</string>
 			<key>to</key>
-			<string>DFD4F745-4F49-4015-96C3-413828E5418A - DFD4F745-4F49-4015-96C3-413828E5418A</string>
+			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
 		</dict>
-		<key>F411C22B-4DB0-4B4E-88C7-A905DDC63C4B</key>
+		<key>11B538C9-EB20-469F-AF91-5B02003BD017</key>
 		<dict>
 			<key>from</key>
 			<string>1D48DE69-69E0-4DB1-AED2-BC1E786EFF2B - 1D48DE69-69E0-4DB1-AED2-BC1E786EFF2B</string>
 			<key>to</key>
 			<string>26A3CB3E-24EC-43A2-AE40-229E16FBBF71 - 26A3CB3E-24EC-43A2-AE40-229E16FBBF71</string>
 		</dict>
-		<key>F4B25DF4-1F6C-4FE7-AACB-7859F3D65C81</key>
+		<key>31B1B6E3-B698-480A-B355-D6390ADB381F</key>
 		<dict>
 			<key>from</key>
-			<string>40288C70-9079-4824-858A-4F588F4F5FEF - 40288C70-9079-4824-858A-4F588F4F5FEF</string>
+			<string>D6150556-CEEC-40A4-9C83-DB20DDD2AD9F - D6150556-CEEC-40A4-9C83-DB20DDD2AD9F</string>
 			<key>to</key>
-			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
+			<string>DFD4F745-4F49-4015-96C3-413828E5418A - DFD4F745-4F49-4015-96C3-413828E5418A</string>
 		</dict>
-		<key>FF1F0474-CCED-4EE6-A2BD-71E0D8541F8F</key>
+		<key>B4600881-755E-48B5-8F06-392A8D5B8FB1</key>
 		<dict>
 			<key>from</key>
 			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
 			<key>to</key>
 			<string>D6150556-CEEC-40A4-9C83-DB20DDD2AD9F - D6150556-CEEC-40A4-9C83-DB20DDD2AD9F</string>
+		</dict>
+		<key>DDF191C6-211B-4478-BB93-B03492305C04</key>
+		<dict>
+			<key>from</key>
+			<string>26A3CB3E-24EC-43A2-AE40-229E16FBBF71 - 26A3CB3E-24EC-43A2-AE40-229E16FBBF71</string>
+			<key>to</key>
+			<string>40288C70-9079-4824-858A-4F588F4F5FEF - 40288C70-9079-4824-858A-4F588F4F5FEF</string>
 		</dict>
 	</dict>
 	<key>variables</key>
