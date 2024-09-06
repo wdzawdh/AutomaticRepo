@@ -169,7 +169,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:153.000000</string>
+				<string>565.000000:153.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -331,7 +331,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:326.000000</string>
+				<string>565.000000:326.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -501,7 +501,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:595.000000</string>
+				<string>565.000000:595.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -674,7 +674,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:768.000000</string>
+				<string>565.000000:768.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -892,7 +892,7 @@ osascript -e 'display notification "压缩完成" with title "TinyPng"'</string>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:950.000000</string>
+				<string>565.000000:950.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -902,33 +902,33 @@ osascript -e 'display notification "压缩完成" with title "TinyPng"'</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>8B6C2C18-445E-4ADE-95FF-884C40220C90</key>
-		<dict>
-			<key>from</key>
-			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
-			<key>to</key>
-			<string>461313CA-940A-49F8-A4F0-A6AAC4413E9F - 461313CA-940A-49F8-A4F0-A6AAC4413E9F</string>
-		</dict>
-		<key>A1DC3004-BD0E-490F-A133-B75D3E70B11E</key>
+		<key>337A77D3-74BD-4330-8BB7-5D36EB0DFAFC</key>
 		<dict>
 			<key>from</key>
 			<string>40288C70-9079-4824-858A-4F588F4F5FEF - 40288C70-9079-4824-858A-4F588F4F5FEF</string>
 			<key>to</key>
 			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
 		</dict>
-		<key>CB07DD7D-1F56-4D8D-9141-AE64B169162F</key>
+		<key>33B5C992-1B11-4DE4-803E-03FB11DA8825</key>
 		<dict>
 			<key>from</key>
 			<string>461313CA-940A-49F8-A4F0-A6AAC4413E9F - 461313CA-940A-49F8-A4F0-A6AAC4413E9F</string>
 			<key>to</key>
 			<string>DFD4F745-4F49-4015-96C3-413828E5418A - DFD4F745-4F49-4015-96C3-413828E5418A</string>
 		</dict>
-		<key>D8D884C9-32FF-42C6-B2EC-6464AB0537EF</key>
+		<key>3D10994E-28E9-4F86-B77E-87613A68522A</key>
 		<dict>
 			<key>from</key>
 			<string>1D48DE69-69E0-4DB1-AED2-BC1E786EFF2B - 1D48DE69-69E0-4DB1-AED2-BC1E786EFF2B</string>
 			<key>to</key>
 			<string>40288C70-9079-4824-858A-4F588F4F5FEF - 40288C70-9079-4824-858A-4F588F4F5FEF</string>
+		</dict>
+		<key>4FFAE9E0-66E5-4013-B8AE-7DECD5407011</key>
+		<dict>
+			<key>from</key>
+			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
+			<key>to</key>
+			<string>461313CA-940A-49F8-A4F0-A6AAC4413E9F - 461313CA-940A-49F8-A4F0-A6AAC4413E9F</string>
 		</dict>
 	</dict>
 	<key>variables</key>

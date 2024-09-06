@@ -91,46 +91,59 @@ jobs:
             zip_file="${folder_name}.zip"
             zip -r "$zip_file" "$folder"
 
-            # 创建或更新 GitHub Release
-            release_response=$(curl --request POST \
-              --url "https://api.github.com/repos/${{ github.repository }}/releases" \
-              --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              --header "Content-Type: application/json" \
-              --data '{
-                "tag_name": "'"$folder_name-release"'",
-                "target_commitish": "'"${{ github.sha }}"'",
-                "name": "'"$folder_name"'",
-                "draft": false,
-                "prerelease": false
-              }')
+            # 检查是否已有同名 tag 的 release
+            release_response=$(curl --request GET \
+              --url "https://api.github.com/repos/${{ github.repository }}/releases/tags/$folder_name-release" \
+              --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}")
 
-            echo "$release_response" # 输出release_response
-
-            # 获取 Release ID
+            # 检查返回的状态码
             release_id=$(echo "$release_response" | jq '.id')
 
-            echo "release_id $release_id"  # 输出release_id
+            if [ "$release_id" == "null" ]; then
+              # 如果没有 release，则创建新的 release
+              release_response=$(curl --request POST \
+                --url "https://api.github.com/repos/${{ github.repository }}/releases" \
+                --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                --header "Content-Type: application/json" \
+                --data '{
+                  "tag_name": "'"$folder_name-release"'",
+                  "target_commitish": "'"${{ github.sha }}"'",
+                  "name": "'"$folder_name"'",
+                  "draft": false,
+                  "prerelease": false
+                }')
 
-            # 获取已有Release列表
+              # 获取新的 release_id
+              release_id=$(echo "$release_response" | jq '.id')
+            else
+              echo "Release already exists. Updating the release."
+            fi
+
+            # 获取 release 资产列表，检查是否已有同名资产
             assets=$(curl --request GET \
               --url "https://api.github.com/repos/${{ github.repository }}/releases/$release_id/assets" \
               --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}")
-            
-            echo "$assets"  # 输出返回的内容，检查是否是有效的 JSON
-            
-            # 查找并删除同名文件
+
+            # 查找与 zip 文件名匹配的资产
             asset_id=$(echo "$assets" | jq -r ".[] | select(.name == \"$zip_file\") | .id")
+
             if [ -n "$asset_id" ]; then
-              curl --request DELETE \
-                  --url "https://api.github.com/repos/${{ github.repository }}/releases/assets/$asset_id" \
-                  --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}"
+              # 如果存在同名资产，更新该资产
+              curl --request PATCH \
+                --url "https://api.github.com/repos/${{ github.repository }}/releases/assets/$asset_id" \
+                --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                --header "Content-Type: application/json" \
+                --data '{
+                  "name": "'"$zip_file"'",
+                  "label": "Updated ZIP file for '"$folder_name"'"
+                }'
+            else
+              # 如果没有同名资产，上传 ZIP 文件
+              curl --request POST \
+                --url "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=$zip_file" \
+                --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                --header "Content-Type: application/zip" \
+                --upload-file "$zip_file"
             fi
-            
-            # 上传 ZIP 文件到 Release
-            curl --request POST \
-              --url "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=$zip_file" \
-              --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              --header "Content-Type: application/zip" \
-              --upload-file "$zip_file"
           done
         shell: bash
