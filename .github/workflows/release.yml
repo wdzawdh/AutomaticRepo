@@ -112,6 +112,8 @@ jobs:
               --url "https://api.github.com/repos/${{ github.repository }}/releases/$release_id/assets" \
               --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}")
             
+            echo "$assets"  # 输出返回的内容，检查是否是有效的 JSON
+            
             # 查找并删除同名文件
             asset_id=$(echo "$assets" | jq -r ".[] | select(.name == \"$zip_file\") | .id")
             if [ -n "$asset_id" ]; then
