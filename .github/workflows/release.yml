@@ -140,7 +140,7 @@ jobs:
                 --header "Content-Type: application/json" \
                 --data '{
                   "name": "'"$zip_file"'",
-                  "label": "'"$zip_file"'",
+                  "label": "'"$folder_name"'"
                 }')
             else
               # 如果没有同名资产，上传 ZIP 文件
