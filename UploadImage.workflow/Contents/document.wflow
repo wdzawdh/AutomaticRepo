@@ -164,7 +164,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:221.000000</string>
+				<string>309.000000:153.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -503,7 +503,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:403.000000</string>
+				<string>309.000000:335.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -513,7 +513,7 @@ fi</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>79EAEEB4-A014-438E-A0FC-52DDF1D5FEA5</key>
+		<key>E4413775-7C36-47D5-9D07-7A6C223ED128</key>
 		<dict>
 			<key>from</key>
 			<string>05B37906-D2C1-4BC5-A52C-5543248C92CB - 05B37906-D2C1-4BC5-A52C-5543248C92CB</string>
