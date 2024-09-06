@@ -74,7 +74,7 @@
 					<key>interactiveType</key>
 					<integer>1</integer>
 					<key>outputFilePath</key>
-					<string>~/.automatic/cache/screenshot.png</string>
+					<string>~/.automator/cache/screenshot.png</string>
 					<key>screenshotType</key>
 					<integer>1</integer>
 					<key>timedScreenshot</key>
@@ -276,7 +276,7 @@
 					<string>#!/bin/bash
 
 # 配置文件路径
-CONFIG_FILE="$HOME/.automatic/github_images_config.properties"
+CONFIG_FILE="$HOME/.automator/github_images_config.properties"
 
 # 默认配置
 default_config="\
@@ -443,9 +443,7 @@ if echo "$RESPONSE" | grep -q '"content"'; then
   echo "$MARKDOWN_LINK" | pbcopy
 else
   exit "文件上传失败！响应信息: $RESPONSE"
-fi
-
-</string>
+fi</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -570,7 +568,7 @@ fi
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>66DC028A-D11B-4EFB-84BD-1262784FF4B4</key>
+		<key>6556C59A-E8B5-45F5-B73D-998D1BF215EF</key>
 		<dict>
 			<key>from</key>
 			<string>A7E1883B-1421-4BFF-8E6E-1727FE23F688 - A7E1883B-1421-4BFF-8E6E-1727FE23F688</string>
@@ -581,7 +579,7 @@ fi
 	<key>workflowMetaData</key>
 	<dict>
 		<key>workflowTypeIdentifier</key>
-		<string>com.apple.Automator.application</string>
+		<string>com.apple.Automator.workflow</string>
 	</dict>
 </dict>
 </plist>
