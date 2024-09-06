@@ -107,6 +107,19 @@ jobs:
             # 获取 Release ID
             release_id=$(echo "$release_response" | jq '.id')
 
+            # 获取已有Release列表
+            assets=$(curl --request GET \
+              --url "https://api.github.com/repos/${{ github.repository }}/releases/$release_id/assets" \
+              --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}")
+            
+            # 查找并删除同名文件
+            asset_id=$(echo "$assets" | jq -r ".[] | select(.name == \"$zip_file\") | .id")
+            if [ -n "$asset_id" ]; then
+              curl --request DELETE \
+                  --url "https://api.github.com/repos/${{ github.repository }}/releases/assets/$asset_id" \
+                  --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}"
+            fi
+            
             # 上传 ZIP 文件到 Release
             curl --request POST \
               --url "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=$zip_file" \
