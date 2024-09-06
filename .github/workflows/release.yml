@@ -134,21 +134,21 @@ jobs:
 
             if [ -n "$asset_id" ]; then
               # 如果存在同名资产，更新该资产
-              release_response=curl --request PATCH \
+              release_response=$(curl --request PATCH \
                 --url "https://api.github.com/repos/${{ github.repository }}/releases/assets/$asset_id" \
                 --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                 --header "Content-Type: application/json" \
                 --data '{
                   "name": "'"$zip_file"'",
                   "label": "Updated ZIP file for '"$folder_name"'"
-                }'
+                }')
             else
               # 如果没有同名资产，上传 ZIP 文件
-              release_response=curl --request POST \
+              release_response=$(curl --request POST \
                 --url "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=$zip_file" \
                 --header "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                 --header "Content-Type: application/zip" \
-                --upload-file "$zip_file"
+                --upload-file "$zip_file")
             fi
             echo "upload_response $release_response"
           done
