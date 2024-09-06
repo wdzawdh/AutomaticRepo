@@ -110,7 +110,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:295.000000</string>
+				<string>565.000000:227.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Specified URLs.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -190,7 +190,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:395.000000</string>
+				<string>565.000000:327.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Text from Webpage.action/Contents/Resources/Base.lproj/GetWebpageText.nib</string>
 			</dict>
@@ -376,7 +376,7 @@ echo "$TARGET_PATH"</string>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:577.000000</string>
+				<string>565.000000:509.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -464,21 +464,21 @@ echo "$TARGET_PATH"</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>7A3591E6-93A5-4A9E-84D7-7490E8AA30BD</key>
-		<dict>
-			<key>from</key>
-			<string>B59B63A6-E385-4412-8D30-49B8C886C1FF - B59B63A6-E385-4412-8D30-49B8C886C1FF</string>
-			<key>to</key>
-			<string>2F6AA43C-D329-4B61-A354-87C47F2492BC - 2F6AA43C-D329-4B61-A354-87C47F2492BC</string>
-		</dict>
-		<key>95CD4C03-3377-4888-AB6A-A811826330CD</key>
+		<key>7404A05E-73F7-45B1-BC5D-6D185657E8F7</key>
 		<dict>
 			<key>from</key>
 			<string>DF6D88A1-BC50-4D13-BF7B-58FB610369AE - DF6D88A1-BC50-4D13-BF7B-58FB610369AE</string>
 			<key>to</key>
 			<string>B8B45C80-3348-4D9B-ACCD-4CE6D19548AF - B8B45C80-3348-4D9B-ACCD-4CE6D19548AF</string>
 		</dict>
-		<key>C356E6E3-52CA-4C10-83EE-52CA702B9B78</key>
+		<key>B3BF1AE5-619A-4C81-8E69-BB49E9773C25</key>
+		<dict>
+			<key>from</key>
+			<string>B59B63A6-E385-4412-8D30-49B8C886C1FF - B59B63A6-E385-4412-8D30-49B8C886C1FF</string>
+			<key>to</key>
+			<string>2F6AA43C-D329-4B61-A354-87C47F2492BC - 2F6AA43C-D329-4B61-A354-87C47F2492BC</string>
+		</dict>
+		<key>B95DDE74-8399-4118-A672-9C73D52F4C7F</key>
 		<dict>
 			<key>from</key>
 			<string>B8B45C80-3348-4D9B-ACCD-4CE6D19548AF - B8B45C80-3348-4D9B-ACCD-4CE6D19548AF</string>

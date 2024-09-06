@@ -107,6 +107,8 @@ jobs:
             # 获取 Release ID
             release_id=$(echo "$release_response" | jq '.id')
 
+            echo "release_id $release_id"  # 输出release_id
+
             # 获取已有Release列表
             assets=$(curl --request GET \
               --url "https://api.github.com/repos/${{ github.repository }}/releases/$release_id/assets" \
