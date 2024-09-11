@@ -493,6 +493,174 @@
 					YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25Z
 					JGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGG
 					oF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290
+					gAGvEBgLDBMYHCAoMjM2PUFGR0pOUlZXWmFn
+					a21VJG51bGzTDQ4PEBESXxAXTlNDb21wb3Vu
+					ZFByZWRpY2F0ZVR5cGVfEA9OU1N1YnByZWRp
+					Y2F0ZXNWJGNsYXNzEACAAoAX0hQPFRdaTlMu
+					b2JqZWN0c6EWgAOAFtMNDg8ZGhIQAoAEgBfS
+					FA8dF6EegAWAFtQPISIjJCUmJ18QEU5TUmln
+					aHRFeHByZXNzaW9uXxAQTlNMZWZ0RXhwcmVz
+					c2lvbl8QE05TUHJlZGljYXRlT3BlcmF0b3KA
+					FYAQgAaAE9UpKissDy0uLzAxWU5TT3BlcmFu
+					ZF5OU1NlbGVjdG9yTmFtZV8QEE5TRXhwcmVz
+					c2lvblR5cGVbTlNBcmd1bWVudHOACIAHEAOA
+					CoAPXHZhbHVlRm9yS2V5OtIrDzQ1EAGACdI3
+					ODk6WiRjbGFzc25hbWVYJGNsYXNzZXNfEBBO
+					U1NlbGZFeHByZXNzaW9uozk7PFxOU0V4cHJl
+					c3Npb25YTlNPYmplY3TSFA8+QKE/gAuADtMP
+					K0JDREVZTlNLZXlQYXRogA0QCoAMVG5hbWXS
+					NzhISV8QHE5TS2V5UGF0aFNwZWNpZmllckV4
+					cHJlc3Npb26jSDs80jc4S0xeTlNNdXRhYmxl
+					QXJyYXmjS008V05TQXJyYXnSNzhPUF8QE05T
+					S2V5UGF0aEV4cHJlc3Npb26kT1E7PF8QFE5T
+					RnVuY3Rpb25FeHByZXNzaW9u01MrD1QQVV8Q
+					D05TQ29uc3RhbnRWYWx1ZYARgBJWLjkucG5n
+					0jc4WFlfEBlOU0NvbnN0YW50VmFsdWVFeHBy
+					ZXNzaW9uo1g7PNUPW1xdXl8QLzRgWk5TTW9k
+					aWZpZXJXTlNGbGFnc1pOU1Bvc2l0aW9uXk5T
+					T3BlcmF0b3JUeXBlgBQQCdI3OGJjXxAcTlNT
+					dWJzdHJpbmdQcmVkaWNhdGVPcGVyYXRvcqRk
+					ZWY8XxAcTlNTdWJzdHJpbmdQcmVkaWNhdGVP
+					cGVyYXRvcl8QGU5TU3RyaW5nUHJlZGljYXRl
+					T3BlcmF0b3JfEBNOU1ByZWRpY2F0ZU9wZXJh
+					dG9y0jc4aGlfEBVOU0NvbXBhcmlzb25QcmVk
+					aWNhdGWjaGo8W05TUHJlZGljYXRl0jc4TWyi
+					TTzSNzhub18QE05TQ29tcG91bmRQcmVkaWNh
+					dGWjbmo8AAgAEQAaACQAKQAyADcASQBMAFEA
+					UwBuAHQAewCVAKcArgCwALIAtAC5AMQAxgDI
+					AMoA0QDTANUA1wDcAN4A4ADiAOsA/wESASgB
+					KgEsAS4BMAE7AUUBVAFnAXMBdQF3AXkBewF9
+					AYoBjwGRAZMBmAGjAawBvwHDAdAB2QHeAeAB
+					4gHkAesB9QH3AfkB+wIAAgUCJAIoAi0CPAJA
+					AkgCTQJjAmgCfwKGApgCmgKcAqMCqALEAsgC
+					0wLeAuYC8QMAAwIDBAMJAygDLQNMA2gDfgOD
+					A5sDnwOrA7ADswO4A84AAAAAAAACAQAAAAAA
+					AABwAAAAAAAAAAAAAAAAAAAD0g==
+					</data>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.FilterFinderItems2</string>
+				<key>CFBundleVersion</key>
+				<string>2.1.1</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryFilesAndFolders</string>
+				</array>
+				<key>Class Name</key>
+				<string>Filter_Finder_Items_2</string>
+				<key>InputUUID</key>
+				<string>F4AF452D-2834-4E84-A52B-8C8133E9D5A8</string>
+				<key>Keywords</key>
+				<array/>
+				<key>OutputUUID</key>
+				<string>F45D7481-C89C-49AA-9C6A-CFA8E57C4071</string>
+				<key>UUID</key>
+				<string>44C46C59-6FDC-4FD0-B957-917EC7D39CBA</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>com.apple.cocoa.path</string>
+						<key>name</key>
+						<string>itemType</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<data>
+						</data>
+						<key>name</key>
+						<string>predicate</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>565.000000:600.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.1.1</string>
+				<key>AMApplication</key>
+				<array>
+					<string>访达</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>itemType</key>
+					<dict/>
+					<key>predicate</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>AMSelectedInputType</key>
+				<string>com.apple.cocoa.path</string>
+				<key>AMSelectedOutputType</key>
+				<string>com.apple.cocoa.path</string>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Filter Finder Items 2.action</string>
+				<key>ActionName</key>
+				<string>过滤“访达”项目</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>itemType</key>
+					<string>com.apple.cocoa.path</string>
+					<key>predicate</key>
+					<data>
+					YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25Z
+					JGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGG
+					oF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290
 					gAGvECILDBMbIy0uMTg8QUJFSU1SU1ZcYGRp
 					bG1vdHd4en+Cg4WHVSRudWxs0w0ODxAREl8Q
 					F05TQ29tcG91bmRQcmVkaWNhdGVUeXBlXxAP
@@ -601,7 +769,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>565.000000:696.000000</string>
+				<string>565.000000:869.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -774,7 +942,7 @@
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>565.000000:869.000000</string>
+				<string>565.000000:1042.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -992,7 +1160,7 @@ osascript -e 'display notification "压缩完成" with title "TinyPng"'</string>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>565.000000:1051.000000</string>
+				<string>565.000000:1224.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1002,40 +1170,47 @@ osascript -e 'display notification "压缩完成" with title "TinyPng"'</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>0DF4243D-204F-40F3-9E65-139EEB520129</key>
+		<key>2300CC33-901A-4EF8-BCB3-F5EC2CB4B745</key>
 		<dict>
 			<key>from</key>
 			<string>40288C70-9079-4824-858A-4F588F4F5FEF - 40288C70-9079-4824-858A-4F588F4F5FEF</string>
 			<key>to</key>
-			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
+			<string>44C46C59-6FDC-4FD0-B957-917EC7D39CBA - 44C46C59-6FDC-4FD0-B957-917EC7D39CBA</string>
 		</dict>
-		<key>11B538C9-EB20-469F-AF91-5B02003BD017</key>
+		<key>2F073D0E-1DA0-40B7-853C-D68A05CC4C05</key>
+		<dict>
+			<key>from</key>
+			<string>26A3CB3E-24EC-43A2-AE40-229E16FBBF71 - 26A3CB3E-24EC-43A2-AE40-229E16FBBF71</string>
+			<key>to</key>
+			<string>40288C70-9079-4824-858A-4F588F4F5FEF - 40288C70-9079-4824-858A-4F588F4F5FEF</string>
+		</dict>
+		<key>82AAF149-101A-47EC-AB60-BFCFAF8B0DD9</key>
+		<dict>
+			<key>from</key>
+			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
+			<key>to</key>
+			<string>D6150556-CEEC-40A4-9C83-DB20DDD2AD9F - D6150556-CEEC-40A4-9C83-DB20DDD2AD9F</string>
+		</dict>
+		<key>C2A4294F-74AC-4BB0-80A2-15EB1D97AF8B</key>
 		<dict>
 			<key>from</key>
 			<string>1D48DE69-69E0-4DB1-AED2-BC1E786EFF2B - 1D48DE69-69E0-4DB1-AED2-BC1E786EFF2B</string>
 			<key>to</key>
 			<string>26A3CB3E-24EC-43A2-AE40-229E16FBBF71 - 26A3CB3E-24EC-43A2-AE40-229E16FBBF71</string>
 		</dict>
-		<key>31B1B6E3-B698-480A-B355-D6390ADB381F</key>
+		<key>D407CF81-DEC0-42DC-8F67-C64DF8BA5BB3</key>
 		<dict>
 			<key>from</key>
 			<string>D6150556-CEEC-40A4-9C83-DB20DDD2AD9F - D6150556-CEEC-40A4-9C83-DB20DDD2AD9F</string>
 			<key>to</key>
 			<string>DFD4F745-4F49-4015-96C3-413828E5418A - DFD4F745-4F49-4015-96C3-413828E5418A</string>
 		</dict>
-		<key>B4600881-755E-48B5-8F06-392A8D5B8FB1</key>
+		<key>DFAB7F87-CCD1-41BF-815F-50BB3FCB971D</key>
 		<dict>
 			<key>from</key>
+			<string>44C46C59-6FDC-4FD0-B957-917EC7D39CBA - 44C46C59-6FDC-4FD0-B957-917EC7D39CBA</string>
+			<key>to</key>
 			<string>51510795-46E4-436E-98B5-3D92C62487E9 - 51510795-46E4-436E-98B5-3D92C62487E9</string>
-			<key>to</key>
-			<string>D6150556-CEEC-40A4-9C83-DB20DDD2AD9F - D6150556-CEEC-40A4-9C83-DB20DDD2AD9F</string>
-		</dict>
-		<key>DDF191C6-211B-4478-BB93-B03492305C04</key>
-		<dict>
-			<key>from</key>
-			<string>26A3CB3E-24EC-43A2-AE40-229E16FBBF71 - 26A3CB3E-24EC-43A2-AE40-229E16FBBF71</string>
-			<key>to</key>
-			<string>40288C70-9079-4824-858A-4F588F4F5FEF - 40288C70-9079-4824-858A-4F588F4F5FEF</string>
 		</dict>
 	</dict>
 	<key>variables</key>
